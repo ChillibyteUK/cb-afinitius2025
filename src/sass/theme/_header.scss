@@ -1,0 +1,85 @@
+nav.navbar {
+    background: linear-gradient(to bottom,rgba(0,0,0,.5) 1%,rgba(255,255,255,0) 100%);
+    font-size: 16px;
+    transition: all .3s ease;
+
+    &.hide {
+        top: -140px;
+    }
+
+    &.scrolled,
+    &.navdark {
+        background: none;
+        background-color: #fff;
+        .logo {
+            background-image: url(../img/afiniti-logo-v2--dark.png);
+        }
+        a.nav-link {
+            color: var(--col-grey-500);
+        }
+        .navbar-toggler {
+            color: var(--col-grey-500);
+        }
+    }
+
+    .navbar-toggler {
+        border: none;
+        color: white;
+        &:focus {
+            box-shadow: none;
+        }
+    }
+    .navbar-toggler[aria-expanded="true"] {
+        color: var(--col-grey-500);
+    }
+
+    .btn {
+        font-size: 16px;
+    }
+
+    .dropdown-menu {
+        font-size: 16px;
+    }
+    
+    @media (max-width:991px) {
+        .dropdown-menu {
+            border: none;
+            border-radius: 0;
+        }
+    }
+
+    a.nav-link {
+        color: white;
+    }
+
+    .btn a {
+        display: inline;
+    }
+
+    // @media (min-width:992px) {
+    //     ul#main-menu li:not(:last-child) {
+    //         margin-right: 2rem;
+    //         text-align: left;
+    //     }
+    //     #main-menu ul.dropdown-menu li {
+    //         margin-right: 0;
+    //         padding-left: 0;
+    //         text-align: left;
+    //     }
+    // }
+
+    // <img class="logo" src="<?=get_stylesheet_directory_uri()?>/img/afiniti-logo-v2.png" width=348 height=121>
+    .logo {
+        background-image: url(../img/afiniti-logo-v2.png);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 80px;
+        height: 25px;
+        @media (min-width:576px) {
+            width: 150px;
+            height: 52px;
+        }
+    }
+
+}

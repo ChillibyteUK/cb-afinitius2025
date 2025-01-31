@@ -55,26 +55,26 @@ function widgets_init()
 {
     register_sidebar(
         array(
-            'name'          => __('Footer Col 1', 'cb-afinitius2025),
+            'name'          => __('Footer Col 1', 'cb-afiniti'),
             'id'            => 'footer-1',
-            'description'   => __('Footer Col 1', 'cb-afinitius2025),
+            'description'   => __('Footer Col 1', 'cb-afiniti'),
             'before_widget' => '<div id="%1$s" class="footer-widget %2$s">',
             'after_widget'  => '</div>',
         )
     );
 
     register_nav_menus(array(
-        'primary_nav' => __('Primary Nav', 'cb-afinitius2025),
+        'primary_nav' => __('Primary Nav', 'cb-afiniti'),
     ));
 
     register_nav_menus(array(
-        'footer_menu1' => __('Footer Menu 1', 'cb-afinitius2025),
+        'footer_menu1' => __('Footer Menu 1', 'cb-afiniti'),
     ));
     // register_nav_menus(array(
-    //     'footer_menu2' => __('Footer Menu 2', 'cb-afinitius2025),
+    //     'footer_menu2' => __('Footer Menu 2', 'cb-afiniti'),
     // ));
     // register_nav_menus(array(
-    //     'footer_menu3' => __('Footer Menu 3', 'cb-afinitius2025),
+    //     'footer_menu3' => __('Footer Menu 3', 'cb-afiniti'),
     // ));
 
     unregister_sidebar('hero');

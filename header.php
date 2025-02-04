@@ -23,7 +23,7 @@ defined('ABSPATH') || exit;
 <?php
 $current_path = $_SERVER['REQUEST_URI'];
 $canonical_url = 'https://www.afiniti.co.uk' . $current_path;
-echo '<link rel="canonical" href="' . esc_url($canonical_url) . '" />';
+echo '<link rel="alternate" href="' . esc_url($canonical_url) . '" hreflang="x-default"/>';
 
 if (!is_user_logged_in()) {
     if (get_field('ga_property', 'options')) { 

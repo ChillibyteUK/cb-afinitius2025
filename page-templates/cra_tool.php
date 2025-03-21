@@ -133,10 +133,10 @@ get_header();
                     </div>
                     <label for="contactTitle">Job Title</label>
                     <input type="text" name="contactTitle" id="contactTitle" class="form-control">
-                    <label for="orgName">Organisation Name<sup>*</sup></label>
+                    <label for="orgName">Organization Name<sup>*</sup></label>
                     <div>
                         <input type="text" name="orgName" id="orgName" class="form-control" required>
-                        <div class="alert alert-danger" id="orgNameWarn">Please enter your organisation name</div>
+                        <div class="alert alert-danger" id="orgNameWarn">Please enter your organization name</div>
                     </div>
                     <label for="contactPhone">Contact Number</label>
                     <input type="text" name="contactPhone" id="contactPhone" class="form-control">
@@ -163,14 +163,14 @@ get_header();
             </div>
         </section>
         <section class="stepCard" id="form2">
-            <h2>Step 2 - About Your Organisation</h2>
+            <h2>Step 2 - About Your Organization</h2>
             <div class="progress">
                 <div class="progress-bar progress-bar-striped" role="progressbar" style="width:20%" aria-valuenow="20"
                     aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <div class="form_panel">
                 <div class="form_grid mb-3">
-                    <label for="changeInProgress">Is your organisation currently implementing or planning a major change
+                    <label for="changeInProgress">Is your organization currently implementing or planning a major change
                         initiative?</label>
                     <div>
                         <select name="changeInProgress" id="changeInProgress" class="form-select">

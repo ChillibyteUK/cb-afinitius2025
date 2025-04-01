@@ -1,53 +1,72 @@
 <?php
-$colour = strtolower(get_field('background')) ?? null;
+/**
+ * Template for displaying the video feature block.
+ *
+ * @package cb-afinitius2025
+ */
+
+$colour     = strtolower( get_field( 'background' ) ) ?? null;
 $background = 'bg--' . $colour;
 
-$featuredVideo = get_field('video_id',get_field('featured_video'));
-$featuredImg = get_vimeo_data_from_id($featuredVideo,'thumbnail_url');
+$bg_size = get_field( 'bg_size' ) ?? null;
+
+$bg_inner = '';
+$bg_outer = '';
+
+echo '<!-- ' . esc_attr( $bg_size ) . ' -->';
+
+if ( 'Full Width' === $bg_size ) {
+	$bg_outer = $background;
+} else {
+	$bg_inner = $background;
+}
+
+$featured_video = get_field( 'video_id', get_field( 'featured_video' ) );
+$featured_image = get_vimeo_data_from_id( $featured_video, 'thumbnail_url' );
 
 ?>
-<section class="video_feature py-4">
-    <div class="container-xl <?=$background?> p-4">
+<section class="video_feature <?= esc_attr( $bg_outer ); ?> py-4">
+    <div class="container-xl <?= esc_attr( $bg_inner ); ?> p-4">
         <div class="row">
             <div class="col-md-6">
-                <img src="<?=$featuredImg?>">
+                <img src="<?= esc_url( $featured_image ); ?>">
             </div>
             <div class="col-md-6">
-                <h2><?=get_field('feature_title')?></h2>
-                <p><?=get_field('feature_description')?></p>
-                <a href="<?=get_the_permalink(get_field('featured_video'))?>" class="btn btn-primary">Watch now</a>
+                <h2><?= esc_html( get_field( 'feature_title' ) ); ?></h2>
+                <p><?= esc_html( get_field( 'feature_description' ) ); ?></p>
+                <a href="<?= esc_url( get_the_permalink( get_field( 'featured_video' ) ) ); ?>" class="btn btn-primary">Watch now</a>
             </div>
         </div>
         <?php
-        if (get_field('videos') ?? null) {
-            if (get_field('additional_videos_title') ?? null) {
+        if ( get_field( 'videos' ) ?? null ) {
+            if ( get_field( 'additional_videos_title' ) ?? null ) {
                 ?>
-                <h2 class="h3 text-center mt-4 mb-0"><?=get_field('additional_videos_title')?></h2>
+                <h2 class="h3 text-center mt-4 mb-0"><?= esc_html( get_field( 'additional_videos_title' ) ); ?></h2>
                 <?php
             }
             ?>
         <div class="video_feature__slider pt-4">
-            <?php            
-foreach (get_field('videos') as $video) {
-    $img = get_vimeo_data_from_id(get_field('video_id',$video),'thumbnail_url');
-    ?>
+            <?php
+			foreach ( get_field( 'videos' ) as $video ) {
+    			$img = get_vimeo_data_from_id( get_field( 'video_id', $video ), 'thumbnail_url' );
+    			?>
     <div class="insight insight--short p-2">
-            <a href="<?=get_the_permalink()?>">
+            <a href="<?= esc_url( get_the_permalink() ); ?>">
                 <div class="post-image-container">
                     <div class="post-image mb-2"
-                        style="background-image:url('<?=$img?>')">
+                        style="background-image:url('<?= esc_url( $img ); ?>')">
                         <div class="img-overlay">
                             <div class="middle"><span class="arrow arrow-block arrow-white"></span></div>
                         </div>
                     </div>
                 </div>
                 <div class="article-title mt-2">
-                    <?=get_the_title($video)?>
+                    <?= esc_html( get_the_title( $video ) ); ?>
                 </div>
             </a>
         </div>
-    <?php
-}
+    			<?php
+			}
             ?>
         </div>
             <?php
@@ -56,9 +75,11 @@ foreach (get_field('videos') as $video) {
     </div>
 </section>
 <?php
-add_action('wp_footer', function () {
-    ?>
-<script src="<?=get_stylesheet_directory_uri()?>/js/slick.min.js"></script>
+add_action(
+	'wp_footer',
+	function () {
+    	?>
+<script src="<?= esc_url( get_stylesheet_directory_uri() ); ?>/js/slick.min.js"></script>
 <script>
     jQuery(function($) {
         $('.video_feature__slider').slick({
@@ -88,7 +109,8 @@ add_action('wp_footer', function () {
         });
     });
 </script>
-<?php
-}, 9999);
-?>
+		<?php
+	},
+	9999
+);
 

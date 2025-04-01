@@ -52,7 +52,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": 50,
                 "class": "",
                 "id": ""
             },
@@ -61,6 +61,28 @@
             "allowed_colors": "",
             "exclude_colors": "",
             "return_format": "slug"
+        },
+        {
+            "key": "field_bg_size",
+            "label": "Background Size",
+            "name": "bg_size",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "Choose layout width for this block.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Full Width": "Full Width",
+                "Container": "Container"
+            },
+            "default_value": "Container",
+            "layout": "vertical",
+            "return_format": "value"
         }
     ],
     "location": [
@@ -68,7 +90,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/cb-video-carousel"
+                "value": "acf/cb-video-carousel"
             }
         ]
     ],

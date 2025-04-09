@@ -34,8 +34,8 @@ include get_stylesheet_directory() . '/page-templates/anim/contact.php';
         <?=get_field('intro_body'); ?>
       </div>
       <div class="mt-4">
-        <h2>Enquiry Form</h2>
-        <div>Type your enquiry below, complete the relevant information and we'll get straight back to you.</div>
+        <h2>Inquiry Form</h2>
+        <div>Type your inquiry below, complete the relevant information and we'll get straight back to you.</div>
         <?=do_shortcode('[gravityform id="' . get_field('contact_form_id') . '" title="false" description="false" ajax="true"]')?>
       </div>
     </div>

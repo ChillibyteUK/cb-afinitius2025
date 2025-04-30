@@ -14,15 +14,31 @@
 .text--purple {
     color: var(--col-purple-500);
 }
+.has-dk-purple-500-color,
+.text--dk-purple {
+    color: var(--col-dk-purple-500);
+}
+
 .has-orange-500-color,
 .text--orange {
     color: var(--col-orange-500);
+}
+.has-blue-500-color,
+.text--blue {
+    color: var(--col-blue-500);
+}
+.has-purple-500-color,
+.text--purple {
+    color: var(--col-purple-500);
+}
+.has-red-500-color,
+.text--red {
+    color: var(--col-red-500);
 }
 .has-grey-500-color,
 .text--grey {
     color: var(--col-grey-500);
 }
-
 
 .has-orange-500-background-color,
 .bg--orange,
@@ -85,3 +101,36 @@
 }
 
 
+
+.has-blue-700-background-color,
+.bg--blue-700 {
+    background: var(--col-blue-700) !important;
+    color: white !important;
+}
+.has-blue-500-background-color,
+.bg--blue,
+.bg--blue-500 {
+    background: var(--col-blue-500) !important;
+    color: white !important;
+}
+.bg--blue-300 {
+    background: var(--col-blue-300) !important;
+    color: white !important;
+}
+
+
+.has-red-700-background-color,
+.bg--red-700 {
+    background: var(--col-red-700) !important;
+    color: white !important;
+}
+.has-red-500-background-color,
+.bg--red,
+.bg--red-500 {
+    background: var(--col-red-500) !important;
+    color: white !important;
+}
+.bg--red-300 {
+    background: var(--col-red-300) !important;
+    color: white !important;
+}

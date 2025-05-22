@@ -18,12 +18,14 @@ defined('ABSPATH') || exit;
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="preload" href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/noto-sans-v27-latin-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="<?php echo get_stylesheet_directory_uri(); ?>/fonts/noto-sans-v27-latin-700.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-	<link rel="alternate" href="https://www.afiniticonsultants.com/" hreflang="en-US" /> 
-	<link rel="alternate" href="https://www.afiniti.co.uk/" hreflang="en-GB" />
-<?php
-$current_path = $_SERVER['REQUEST_URI'];
-$canonical_url = 'https://www.afiniti.co.uk' . $current_path;
-echo '<link rel="alternate" href="' . esc_url($canonical_url) . '" hreflang="x-default"/>';
+	<?php
+	$current_path  = $_SERVER['REQUEST_URI'];
+	$canonical_url = 'https://www.afiniticonsultants.com' . $current_path;
+	?>
+<link rel="alternate" href="<?= esc_url( 'https://www.afiniticonsultants.com' . $current_path ); ?>" hreflang="en-US" /> 
+<link rel="alternate" href="<?= esc_url( 'https://www.afiniti.co.uk' . $current_path ); ?>" hreflang="en-GB" />
+<link rel="alternate" href="<?= esc_url( $canonical_url ); ?>'" hreflang="x-default"/>
+	<?php
 
 if (!is_user_logged_in()) {
     if (get_field('ga_property', 'options')) { 

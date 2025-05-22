@@ -61,39 +61,39 @@ if (get_field('bing_site_verification','options')) {
 
 wp_head();
 
-if (is_front_page() || is_page('contact-us') ) {
+if ( is_front_page() || is_page( 'contact-us' ) ) {
     ?>
 <script type="application/ld+json">
 {
-  "@context": "http://www.schema.org",
-  "@type": "Organization",
-  "name": "Afiniti",
-  "legalName" : "Afiniti LLP",
-  "url": "https://www.afiniti.co.uk/",
-  "logo": "https://www.afiniti.co.uk/wp-content/uploads/2020/01/afiniti-logo-v2.png",
-  "description": "Afiniti is an award-winning business change consultancy that delivers change with a people focus. We are passionate about making change a force for good driving progress and innovation.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Suite 302, Dowgate Hill House,  14-16 Dowgate Hill",
-    "addressLocality": "London",
-    "addressRegion": "London",
-    "postalCode": "EC4R 2SU",
-    "addressCountry": "United Kingdom"
-   },
-   "contactPoint": [
-    { "@type": "ContactPoint",
-    "email" : " enquiries@afiniti.co.uk",
-    "contactType": "enquiries"
-    }
-   ],
-   "sameAs": [
-   "https://twitter.com/afinitiLLP",
-   "https://www.linkedin.com/company/afiniti",
-   "https://www.youtube.com/user/Afinitiltd",
-   "https://www.crunchbase.com/organization/afinit-ltd",
-   "https://www.facebook.com/AfinitiConsultants",
-   "https://www.wikidata.org/wiki/Q107664234"
-   ]
+	"@context": "http://www.schema.org",
+	"@type": "Organization",
+	"name": "Afiniti",
+	"legalName" : "Afiniti LLP",
+	"url": "https://www.afiniticonsultants.com/",
+	"logo": "https://www.afiniticonsultants.com/wp-content/uploads/2025/05/afiniti-logo.jpg",
+	"description": "Afiniti is an award-winning business change consultancy that delivers change with a people focus. We are passionate about making change a force for good driving progress and innovation.",
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": "4 W 4th Ave",
+		"addressLocality": "San Mateo",
+		"addressRegion": "California",
+		"postalCode": "94402",
+		"addressCountry": "USA"
+	},
+	"contactPoint": [
+		{ "@type": "ContactPoint",
+		"email" : " enquiries@afiniticonsultants.com",
+		"contactType": "enquiries"
+		}
+	],
+	"sameAs": [
+		"https://twitter.com/afinitiLLP",
+		"https://www.linkedin.com/company/afiniti",
+		"https://www.youtube.com/user/Afinitiltd",
+		"https://www.crunchbase.com/organization/afinit-ltd",
+		"https://www.facebook.com/AfinitiConsultants",
+		"https://www.wikidata.org/wiki/Q107664234"
+	]
 }
 </script>    
     <?php

@@ -4,10 +4,10 @@
  *
  * Template for displaying the CRA tool.
  *
+ * @package cb-afinitius2025
  */
 
-// Exit if accessed directly.
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 get_header();
 
@@ -103,6 +103,9 @@ get_header();
         width: 0;
         z-index: -1;
     }
+    .text_icon__icon {
+        overflow: hidden;
+    }
 </style>
 <main id="main">
     <section id="hero" class="hero d-flex align-items-start pt-lg-0 align-items-lg-center">
@@ -112,13 +115,13 @@ get_header();
             <button id="step0" class="btn btn-lg btn--orange">Get Started</button>
         </div>
     </section>
-    <div class="container-xl">
-        <section class="stepCard" id="form0">
-            <?php
+    <section class="stepCard" id="form0">
+        <?php
         the_content();
-?>
-        </section>
-        <section class="stepCard" id="form1">
+        ?>
+    </section>
+    <section class="stepCard" id="form1">
+        <div class="container-xl">
             <h2>Step 1 - Contact Details</h2>
             <div class="progress">
                 <div class="progress-bar progress-bar-striped" role="progressbar" style="width:0%" aria-valuenow="0"
@@ -150,19 +153,20 @@ get_header();
                     <div>&nbsp;</div>
                     <div>
                         <label for="consent"><input type="checkbox" name="consent" id="consent" value="true">
-                            <div>I consent to the terms of the <a href="/privacy-policy/" target="_blank">privacy
-                                    policy</a><sup>*</sup>.</div>
+                            <div>I consent to the terms of the <a href="/privacy-policy/" target="_blank">privacy policy</a><sup>*</sup>.</div>
                         </label>
                         <div class="alert alert-danger" id="consentWarn">Please consent to the terms.</div>
                     </div>
                 </div>
                 <div class="form_buttons d-flex gap-2 justify-content-between">
-                    <a href="/change-readiness-assessment-tool/" class="btn btn-primary">Back</a>
+                    <a href="<?= esc_url( get_permalink() ); ?>" class="btn btn-secondary">Back</a>
                     <button id="step1" class="btn btn-primary">Next</button>
                 </div>
             </div>
-        </section>
-        <section class="stepCard" id="form2">
+        </div>
+    </section>
+    <section class="stepCard" id="form2">
+        <div class="container-xl">
             <h2>Step 2 - About Your Organization</h2>
             <div class="progress">
                 <div class="progress-bar progress-bar-striped" role="progressbar" style="width:20%" aria-valuenow="20"
@@ -170,8 +174,7 @@ get_header();
             </div>
             <div class="form_panel">
                 <div class="form_grid mb-3">
-                    <label for="changeInProgress">Is your organization currently implementing or planning a major change
-                        initiative?</label>
+                    <label for="changeInProgress">Is your organization currently implementing or planning a major change initiative?</label>
                     <div>
                         <select name="changeInProgress" id="changeInProgress" class="form-select">
                             <option value="" disabled selected>Select</option>
@@ -186,13 +189,11 @@ get_header();
                     <div>
                         <textarea name="changeDetail" id="changeDetail" class="form-control" placeholder="For example, implementing a new technology or system, creating a new operating model, digital transformation, culture change, regulatory changes.
 "></textarea>
-                        <div class="alert alert-danger" id="changeDetailWarn">Please tell us about your current/planned
-                            change.</div>
+                        <div class="alert alert-danger" id="changeDetailWarn">Please tell us about your current/planned change.</div>
                     </div>
                 </div>
                 <div class="form_grid">
-                    <label for="changeRole">What, if any role do you normally undertake in relation to a Change
-                        Project/Programme?</label>
+                    <label for="changeRole">What, if any role do you normally undertake in relation to a Change Project/Programme?</label>
                     <div>
                         <select name="changeRole" id="changeRole" class="form-select">
                             <option value="" disabled selected>Select</option>
@@ -209,16 +210,17 @@ get_header();
                     <button id="step2" class="btn btn-primary">Next</button>
                 </div>
             </div>
-        </section>
-        <section class="stepCard" id="form3">
+        </div>
+    </section>
+    <section class="stepCard" id="form3">
+        <div class="container-xl">
             <h2>Step 3 - Making Change Stick</h2>
             <div class="progress">
-                <div class="progress-bar progress-bar-striped" role="progressbar" style="width:40%" aria-valuenow="40"
-                    aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar progress-bar-striped" role="progressbar" style="width:40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <div class="form_panel">
                 <div class="alert alert-light">
-                    <?=get_field('question_header')?>
+                    <?= esc_html( get_field( 'question_header' ) ); ?>
                 </div>
                 <div class="form_grid form_grid--wide">
                     <div class="d-none d-md-block">&nbsp;</div>
@@ -229,177 +231,176 @@ get_header();
                     <div class="d-none d-md-block">&nbsp;</div>
                     <div class="radio_group radio_group--labels d-none d-md-grid">
                         <?php
-            for ($i = 1; $i <= 10; $i++) {
-                echo '<div>' . $i . '</div>';
-            }
-?>
+                        for ( $i = 1; $i <= 10; $i++ ) {
+                            echo '<div>' . $i . '</div>';
+                        }
+                        ?>
                     </div>
                     <?php
+                    $mob_labels = '<div class="d-md-none mobLabels"><div>Strongly<br>Disagree</div><div>Strongly<br>Agree</div></div>';
 
-                $mobLabels = '<div class="d-md-none mobLabels"><div>Strongly<br>Disagree</div><div>Strongly<br>Agree</div></div>';
-
-$q = 1;
-while (have_rows('questions_page_1')) {
-    the_row();
-    ?>
-                    <label
-                        for="form3_answers"><?=get_sub_field('question')?><!-- [<?=get_sub_field('lever')?>]
-                        --></label>
-                    <?=$mobLabels?>
-                    <div class="radio_group">
+                    $q = 1;
+                    while ( have_rows( 'questions_page_1' ) ) {
+                        the_row();
+                        ?>
+                        <label
+                            for="form3_answers"><?= wp_kses_post( get_sub_field( 'question' ) ); ?></label>
+                        <?= wp_kses_post( $mob_labels ); ?>
+                        <div class="radio_group">
+                            <?php
+                            for ( $i = 1; $i <= 10; $i++ ) {
+                                ?>
+                            <input type="radio"
+                                name="form3_answers_<?= esc_attr( $q ); ?>"
+                                data-lever="<?= esc_attr( get_sub_field( 'lever' ) ); ?>"
+                                value="<?= esc_attr( $i ); ?>" class="form-check">
+                                <?php
+                            }
+                            ?>
+                        </div>
                         <?php
-        for ($i = 1; $i <= 10; $i++) {
-            ?>
-                        <input type="radio"
-                            name="form3_answers_<?=$q?>"
-                            data-lever="<?=get_sub_field('lever')?>"
-                            value="<?=$i?>" class="form-check">
-                        <?php
-        }
-    ?>
+                        ++$q;
+                    }
+                    ?>
                     </div>
-                    <?php
-                    $q++;
-}
-?>
-                </div>
-                <div class="alert alert-danger mt-4" id="form3Warn">Please answer all questions.</div>
-                <div class="form_buttons text-end">
-                    <button id="step3" class="btn btn-primary">Next</button>
+                    <div class="alert alert-danger mt-4" id="form3Warn">Please answer all questions.</div>
+                    <div class="form_buttons text-end">
+                        <button id="step3" class="btn btn-primary">Next</button>
+                    </div>
                 </div>
             </div>
         </section>
         <section class="stepCard" id="form4">
-            <h2>Step 4 - Making Change Stick</h2>
-            <div class="progress">
-                <div class="progress-bar progress-bar-striped" role="progressbar" style="width:60%" aria-valuenow="60"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <div class="form_panel">
-                <div class="alert alert-light">
-                    <?=get_field('question_header')?>
+            <div class="container-xl">
+                <h2>Step 4 - Making Change Stick</h2>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width:60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <div class="form_grid form_grid--wide">
-                    <div class="d-none d-md-block">&nbsp;</div>
-                    <div class="justify-content-between d-none d-md-flex">
-                        <div>Strongly<br>Disagree</div>
-                        <div>Strongly<br>Agree</div>
+                <div class="form_panel">
+                    <div class="alert alert-light">
+                        <?= wp_kses_post( get_field( 'question_header' ) ); ?>
                     </div>
-                    <div class="d-none d-md-block">&nbsp;</div>
-                    <div class="radio_group radio_group--labels d-none d-md-grid">
+                    <div class="form_grid form_grid--wide">
+                        <div class="d-none d-md-block">&nbsp;</div>
+                        <div class="justify-content-between d-none d-md-flex">
+                            <div>Strongly<br>Disagree</div>
+                            <div>Strongly<br>Agree</div>
+                        </div>
+                        <div class="d-none d-md-block">&nbsp;</div>
+                        <div class="radio_group radio_group--labels d-none d-md-grid">
+                            <?php
+                            for ( $i = 1; $i <= 10; $i++ ) {
+                                echo '<div>' . esc_html( $i ) . '</div>';
+                            }
+                            ?>
+                        </div>
                         <?php
-    for ($i = 1; $i <= 10; $i++) {
-        echo '<div>' . $i . '</div>';
-    }
-?>
+                        $q = 1;
+                        while ( have_rows( 'questions_page_2' ) ) {
+                            the_row();
+                            ?>
+                        <label
+                            for="form4_answers"><?= wp_kses_post( get_sub_field( 'question' ) ); ?></label>
+                            <?= wp_kses_post( $mob_labels ); ?>
+                        <div class="radio_group">
+                            <?php
+                            for ( $i = 1; $i <= 10; $i++ ) {
+                                ?>
+                            <input type="radio"
+                                name="form4_answers_<?= esc_attr( $q ); ?>"
+                                data-lever="<?= esc_attr( get_sub_field( 'lever' ) ); ?>"
+                                value="<?= esc_attr( $i ); ?>" class="form-check">
+                                <?php
+                            }
+                            ?>
+                        </div>
+                            <?php
+                            ++$q;
+                        }
+                        ?>
                     </div>
-                    <?php
-                $q = 1;
-while (have_rows('questions_page_2')) {
-    the_row();
-    ?>
-                    <label
-                        for="form4_answers"><?=get_sub_field('question')?><!-- [<?=get_sub_field('lever')?>]
-                        --></label>
-                    <?=$mobLabels?>
-                    <div class="radio_group">
-                        <?php
-        for ($i = 1; $i <= 10; $i++) {
-            ?>
-                        <input type="radio"
-                            name="form4_answers_<?=$q?>"
-                            data-lever="<?=get_sub_field('lever')?>"
-                            value="<?=$i?>" class="form-check">
-                        <?php
-        }
-    ?>
+                    <div class="alert alert-danger mt-4" id="form4Warn">Please answer all questions.</div>
+                    <div class="form_buttons text-end">
+                        <button id="step4" class="btn btn-primary">Next</button>
                     </div>
-                    <?php
-                    $q++;
-}
-?>
-                </div>
-                <div class="alert alert-danger mt-4" id="form4Warn">Please answer all questions.</div>
-                <div class="form_buttons text-end">
-                    <button id="step4" class="btn btn-primary">Next</button>
                 </div>
             </div>
         </section>
         <section class="stepCard" id="form5">
-            <h2>Step 5 - Making Change Stick</h2>
-            <div class="progress">
-                <div class="progress-bar progress-bar-striped" role="progressbar" style="width:80%" aria-valuenow="80"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <div class="form_panel">
-                <div class="alert alert-light">
-                    <?=get_field('question_header')?>
+            <div class="container-xl">
+                <h2>Step 5 - Making Change Stick</h2>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width:80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <div class="form_grid form_grid--wide">
-                    <div>&nbsp;</div>
-                    <div class="d-none d-md-flex justify-content-between">
-                        <div>Strongly<br>Disagree</div>
-                        <div>Strongly<br>Agree</div>
+                <div class="form_panel">
+                    <div class="alert alert-light">
+                        <?= wp_kses_post( get_field( 'question_header' ) ); ?>
                     </div>
-                    <div>&nbsp;</div>
-                    <div class="radio_group radio_group--labels d-none d-md-grid">
+                    <div class="form_grid form_grid--wide">
+                        <div>&nbsp;</div>
+                        <div class="d-none d-md-flex justify-content-between">
+                            <div>Strongly<br>Disagree</div>
+                            <div>Strongly<br>Agree</div>
+                        </div>
+                        <div>&nbsp;</div>
+                        <div class="radio_group radio_group--labels d-none d-md-grid">
+                            <?php
+                            for ( $i = 1; $i <= 10; $i++ ) {
+                                echo '<div>' . esc_html( $i ) . '</div>';
+                            }
+                            ?>
+                        </div>
                         <?php
-    for ($i = 1; $i <= 10; $i++) {
-        echo '<div>' . $i . '</div>';
-    }
-?>
+                        $q = 1;
+                        while ( have_rows( 'questions_page_3' ) ) {
+                            the_row();
+                            ?>
+                        <label
+                            for="form5_answers"><?= wp_kses_post( get_sub_field( 'question' ) ); ?></label>
+                            <?= wp_kses_post( $mob_labels ); ?>
+                        <div class="radio_group">
+                            <?php
+                            for ( $i = 1; $i <= 10; $i++ ) {
+                                ?>
+                            <input type="radio"
+                                name="form5_answers_<?= esc_attr( $q ); ?>"
+                                data-lever="<?= esc_attr( get_sub_field( 'lever' ) ); ?>"
+                                value="<?= esc_attr( $i ); ?>" class="form-check">
+                                <?php
+                            }
+                            ?>
+                        </div>
+                            <?php
+                            ++$q;
+                        }
+                        ?>
                     </div>
-                    <?php
-                $q = 1;
-while (have_rows('questions_page_3')) {
-    the_row();
-    ?>
-                    <label
-                        for="form5_answers"><?=get_sub_field('question')?><!-- [<?=get_sub_field('lever')?>]
-                        --></label>
-                    <?=$mobLabels?>
-                    <div class="radio_group">
-                        <?php
-        for ($i = 1; $i <= 10; $i++) {
-            ?>
-                        <input type="radio"
-                            name="form5_answers_<?=$q?>"
-                            data-lever="<?=get_sub_field('lever')?>"
-                            value="<?=$i?>" class="form-check">
-                        <?php
-        }
-    ?>
+                    <div class="alert alert-danger mt-4" id="form5Warn">Please answer all questions.</div>
+                    <div class="form_buttons text-end">
+                        <form
+                            action="<?= esc_url( get_stylesheet_directory_uri() . '/cra.php' ); ?>"
+                            method="post" id="craForm">
+                            <input type="hidden" name="data" id="data" value="">
+                            <input type="hidden" name="scores" id="scores" value="">
+                            <input type="hidden" name="pageID" id="pageID"
+                                value="<?= esc_attr( get_the_ID() ); ?>">
+                            <input type="submit" id="step5" class="btn btn-primary" value="View Results">
+                            <input class="ohnohoney" autocomplete="off" type="email" id="emailaddress" name="emailaddress"
+                                placeholder="Your e-mail here">
+                        </form>
                     </div>
-                    <?php
-                    $q++;
-}
-?>
-                </div>
-                <div class="alert alert-danger mt-4" id="form5Warn">Please answer all questions.</div>
-                <div class="form_buttons text-end">
-                    <form
-                        action="<?=get_stylesheet_directory_uri()?>/cra.php"
-                        method="post" id="craForm">
-                        <input type="hidden" name="data" id="data" value="">
-                        <input type="hidden" name="scores" id="scores" value="">
-                        <input type="hidden" name="pageID" id="pageID"
-                            value="<?=get_the_ID()?>">
-                        <input type="submit" id="step5" class="btn btn-primary" value="View Results">
-                        <input class="ohnohoney" autocomplete="off" type="email" id="emailaddress" name="emailaddress"
-                            placeholder="Your e-mail here">
-                    </form>
                 </div>
             </div>
         </section>
-
     </div>
 </main>
 <?php
-add_action('wp_footer', function () {
-    ?>
+add_action(
+    'wp_footer',
+    function () {
+        ?>
 <script src="https://www.google.com/recaptcha/api.js?render=6LeKUsApAAAAAD9wCXHTKx5BaujLUJVE8BdMQlLY"></script>
 <script>
-
     window.addEventListener('pageshow', function(event) {
         if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
           document.querySelectorAll('input[type="radio"]').forEach(function(radio) {
@@ -425,7 +426,8 @@ add_action('wp_footer', function () {
     }
 </script>
 <script src="<?=get_stylesheet_directory_uri()?>/js/cra.js"></script>
-<?php
-});
+        <?php
+    }
+);
 get_footer();
 ?>

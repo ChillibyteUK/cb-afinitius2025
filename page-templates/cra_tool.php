@@ -406,7 +406,7 @@ add_action(
 <script>
     window.addEventListener('pageshow', function(event) {
         if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
-          document.querySelectorAll('input[type="radio"]').forEach(function(radio) {
+            document.querySelectorAll('input[type="radio"]').forEach(function(radio) {
             radio.checked = false;
             });
         }

@@ -110,7 +110,7 @@ get_header();
 <main id="main">
     <section id="hero" class="hero d-flex align-items-start pt-lg-0 align-items-lg-center">
         <div class="hero__inner container-xl text-center">
-            <h1 class="mb-3"><span>Change Readiness</span> Assessment Tool</h1>
+            <h1 class="mb-3"><?= wp_kses_post( get_field( 'hero_title' ) ); ?></h1>
             <div class="hero__cta">
             <button id="step0" class="btn btn-lg btn--orange">Get Started</button>
         </div>

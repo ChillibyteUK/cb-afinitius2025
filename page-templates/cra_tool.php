@@ -110,7 +110,10 @@ get_header();
 <main id="main">
     <section id="hero" class="hero d-flex align-items-start pt-lg-0 align-items-lg-center">
         <div class="hero__inner container-xl text-center">
-            <h1 class="mb-3"><?= wp_kses_post( get_field( 'hero_title' ) ); ?></h1>
+            <?php
+            $hero_title = get_field( 'hero_title' ) ? get_field( 'hero_title' ) : '<span>Change Readiness</span> Assessment Tool';
+            ?>
+            <h1 class="mb-3"><?= wp_kses_post( $hero_title ); ?></h1>
             <div class="hero__cta">
             <button id="step0" class="btn btn-lg btn--orange">Get Started</button>
         </div>
@@ -232,7 +235,7 @@ get_header();
                     <div class="radio_group radio_group--labels d-none d-md-grid">
                         <?php
                         for ( $i = 1; $i <= 10; $i++ ) {
-                            echo '<div>' . $i . '</div>';
+                            echo '<div>' . esc_html( $i ) . '</div>';
                         }
                         ?>
                     </div>
@@ -425,7 +428,7 @@ add_action(
         });
     }
 </script>
-<script src="<?=get_stylesheet_directory_uri()?>/js/cra.js"></script>
+<script src="<?= esc_url( get_stylesheet_directory_uri() . '/js/cra.js' ); ?>"></script>
         <?php
     }
 );

@@ -8,7 +8,7 @@ $scores = get_field('scores');
 ob_start();
 get_header();
 $header = ob_get_clean();
-$header = preg_replace('#<title>(.*?)<\/title>#', '<title>Change Readiness Assessment Results | Afiniti</title>', $header);
+$header = preg_replace('#<title>(.*?)<\/title>#', '<title>Change Accelerator Results | Afiniti</title>', $header);
 echo $header;
 
 $pageID = get_field('cra_tool_page_id', 'options');
@@ -58,17 +58,17 @@ $levers = array('Leadership','Drivers','Culture','Engagement','Capability','Meth
 <main id="main">
     <section id="hero" class="hero d-flex align-items-start pt-lg-0 align-items-lg-center">
         <div class="hero__inner container-xl text-center">
-            <h1><span>Change Readiness</span> Assessment</h1>
+            <h1><span>Change Accelerator</span> Tool</h1>
             <div class="hero__cta">
                 <a class="btn btn--green" href="/contact-us/">Contact us</a>
             </div>
         </div>
     </section>
     <?php
-include get_stylesheet_directory() . '/page-templates/anim/business-change.php';
-?>
+	include get_stylesheet_directory() . '/page-templates/anim/business-change.php';
+	?>
     <!--
-<?=cbdump($data)?>
+	<?=cbdump($data)?>
     <?=cbdump($scores)?>
     -->
 

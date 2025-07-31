@@ -26,7 +26,6 @@ document.querySelectorAll('.reset').forEach(function(button) {
 
 //---------------------------------------------------------------------- step 2
 // validate step 1
-
 document.getElementById('step1').addEventListener('click',function(){
     const requiredFields = ['contactName','orgName','contactEmail','consent'];
 
@@ -336,3 +335,20 @@ function UpdateScores(form) {
 
     return;
 }
+
+
+//Back buttons
+document.getElementById('step1back').addEventListener('click',function(){
+    document.getElementById('form1').style.display = 'block';
+    document.getElementById('form2').style.display = 'none';
+})
+
+document.getElementById('step2back').addEventListener('click',function(){
+    document.getElementById('form2').style.display = 'block';
+    document.getElementById('form3').style.display = 'none';
+})
+
+document.getElementById('step3back').addEventListener('click',function(){
+    document.getElementById('form3').style.display = 'block';
+    document.getElementById('form4').style.display = 'none';
+})

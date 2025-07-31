@@ -209,8 +209,8 @@ get_header();
                         <div class="alert alert-danger" id="changeRoleWarn">Please select an option.</div>
                     </div>
                 </div>
-                <div class="form_buttons text-end">
-                    <button id="step1" class="btn btn-secondary">Back</button>
+                <div class="form_buttons d-flex gap-2 justify-content-between">
+                    <button id="step1back" class="btn btn-secondary">Back</button>
                     <button id="step2" class="btn btn-primary">Next</button>
                 </div>
             </div>
@@ -268,8 +268,8 @@ get_header();
                     ?>
                     </div>
                     <div class="alert alert-danger mt-4" id="form3Warn">Please answer all questions.</div>
-                    <div class="form_buttons text-end">
-                        <button id="step2" class="btn btn-secondary">Back</button>
+                    <div class="form_buttons d-flex gap-2 justify-content-between">
+                        <button id="step2back" class="btn btn-secondary">Back</button>
                         <button id="step3" class="btn btn-primary">Next</button>
                     </div>
                 </div>
@@ -325,8 +325,8 @@ get_header();
                         ?>
                     </div>
                     <div class="alert alert-danger mt-4" id="form4Warn">Please answer all questions.</div>
-                    <div class="form_buttons text-end">
-                        <button id="step3" class="btn btn-secondary">Back</button>
+                    <div class="form_buttons d-flex gap-2 justify-content-between">
+                        <button id="step3back" class="btn btn-secondary">Back</button>
                         <button id="step4" class="btn btn-primary">Next</button>
                     </div>
                 </div>

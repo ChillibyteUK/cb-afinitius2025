@@ -431,7 +431,7 @@ add_action(
         });
     }
 </script>
-<script src="<?= esc_url( get_stylesheet_directory_uri() . '/js/cra.js' ); ?>"></script>
+<script src="<?= esc_url( get_stylesheet_directory_uri() . '/js/cra.js?v=1' ); ?>"></script>
         <?php
     }
 );

@@ -125,7 +125,7 @@ get_header();
     </section>
     <section class="stepCard" id="form1">
         <div class="container-xl">
-            <h2>Step 1 - Contact Details</h2>
+            <h2>Your details - help us refine your recommendations</h2>
             <div class="progress">
                 <div class="progress-bar progress-bar-striped" role="progressbar" style="width:0%" aria-valuenow="0"
                     aria-valuemin="0" aria-valuemax="100"></div>
@@ -210,6 +210,7 @@ get_header();
                     </div>
                 </div>
                 <div class="form_buttons text-end">
+                    <button id="step1" class="btn btn-secondary">Back</button>
                     <button id="step2" class="btn btn-primary">Next</button>
                 </div>
             </div>
@@ -217,13 +218,13 @@ get_header();
     </section>
     <section class="stepCard" id="form3">
         <div class="container-xl">
-            <h2>Step 3 - Making Change Stick</h2>
+            <h2>Step 3 - Accelerate and de-risk change</h2>
             <div class="progress">
                 <div class="progress-bar progress-bar-striped" role="progressbar" style="width:40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <div class="form_panel">
                 <div class="alert alert-light">
-                    <?= esc_html( get_field( 'question_header' ) ); ?>
+                    <?=get_field( 'question_header'); ?>
                 </div>
                 <div class="form_grid form_grid--wide">
                     <div class="d-none d-md-block">&nbsp;</div>
@@ -268,6 +269,7 @@ get_header();
                     </div>
                     <div class="alert alert-danger mt-4" id="form3Warn">Please answer all questions.</div>
                     <div class="form_buttons text-end">
+                        <button id="step2" class="btn btn-secondary">Back</button>
                         <button id="step3" class="btn btn-primary">Next</button>
                     </div>
                 </div>
@@ -275,7 +277,7 @@ get_header();
         </section>
         <section class="stepCard" id="form4">
             <div class="container-xl">
-                <h2>Step 4 - Making Change Stick</h2>
+                <h2>Step 4 - Accelerate and de-risk change</h2>
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped" role="progressbar" style="width:60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
@@ -324,6 +326,7 @@ get_header();
                     </div>
                     <div class="alert alert-danger mt-4" id="form4Warn">Please answer all questions.</div>
                     <div class="form_buttons text-end">
+                        <button id="step3" class="btn btn-secondary">Back</button>
                         <button id="step4" class="btn btn-primary">Next</button>
                     </div>
                 </div>
@@ -331,7 +334,7 @@ get_header();
         </section>
         <section class="stepCard" id="form5">
             <div class="container-xl">
-                <h2>Step 5 - Making Change Stick</h2>
+                <h2>Step 5 - Accelerate and de-risk change</h2>
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped" role="progressbar" style="width:80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>

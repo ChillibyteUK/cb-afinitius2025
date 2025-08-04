@@ -27,7 +27,7 @@ document.querySelectorAll('.reset').forEach(function(button) {
 //---------------------------------------------------------------------- step 2
 // validate step 1
 document.getElementById('step1').addEventListener('click',function(){
-    const requiredFields = ['contactName','orgName','contactEmail','consent'];
+    const requiredFields = ['contactName','orgName','contactEmail','consent','HearAbout'];
 
     const isValid = [];
     requiredFields.every((x) => {

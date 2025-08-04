@@ -154,9 +154,9 @@ get_header();
                         <div class="alert alert-danger" id="contactEmailWarn">Please enter your email address</div>
                     </div>
 
-                    <label for="HearAbout">How did you hear about Afiniti?</label>
+                    <label for="HearAbout">How did you hear about Afiniti?<sup>*</sup></label>
                     <div>
-                        <select name="HearAbout" id="HearAbout" class="form-select">
+                        <select name="HearAbout" id="HearAbout" class="form-select" required>
                             <option value="" disabled selected>Select</option>
                             <option value="Web Search">Web Search</option>
                             <option value="LinkedIn">LinkedIn</option>
@@ -446,7 +446,7 @@ add_action(
         });
     }
 </script>
-<script src="<?= esc_url( get_stylesheet_directory_uri() . '/js/cra.js?v=1.1' ); ?>"></script>
+<script src="<?= esc_url( get_stylesheet_directory_uri() . '/js/cra.js?v=1.2' ); ?>"></script>
         <?php
     }
 );

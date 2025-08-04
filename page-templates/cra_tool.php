@@ -153,24 +153,20 @@ get_header();
                         <input type="email" name="contactEmail" id="contactEmail" class="form-control" required>
                         <div class="alert alert-danger" id="contactEmailWarn">Please enter your email address</div>
                     </div>
-                    <div>&nbsp;</div>
 
-
-                    <div class="form_grid mb-3">
-                        <label for="HearAbout">How did you hear about Afiniti?</label>
-                        <div>
-                            <select name="HearAbout" id="HearAbout" class="form-select">
-                                <option value="" disabled selected>Select</option>
-                                <option value="Web Search">Web Search</option>
-                                <option value="LinkedIn">LinkedIn</option>
-                                <option value="Email">Email</option>
-                                <option value="Existing Client">Existing Client</option>
-                                <option value="External Referral">External Referral</option>
-                                <option value="Internal Referral">Internal Referral</option>
-                                <option value="Other">Other</option>
-                            </select>
-                            <div class="alert alert-danger" id="HearAboutWarn">Please select an option.</div>
-                        </div>
+                    <label for="HearAbout">How did you hear about Afiniti?</label>
+                    <div>
+                        <select name="HearAbout" id="HearAbout" class="form-select">
+                            <option value="" disabled selected>Select</option>
+                            <option value="Web Search">Web Search</option>
+                            <option value="LinkedIn">LinkedIn</option>
+                            <option value="Email">Email</option>
+                            <option value="Existing Client">Existing Client</option>
+                            <option value="External Referral">External Referral</option>
+                            <option value="Internal Referral">Internal Referral</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <div class="alert alert-danger" id="HearAboutWarn">Please select an option.</div>
                     </div>
 
                     <div>

@@ -166,7 +166,7 @@ get_header();
                             <option value="Internal Referral">Internal Referral</option>
                             <option value="Other">Other</option>
                         </select>
-                        <div class="alert alert-danger" id="contactHowHearWarn">Please select an option.</div>
+                        <div class="alert alert-danger" id="contactHowHearWarn">Please select an option</div>
                     </div>
 
                     <div>

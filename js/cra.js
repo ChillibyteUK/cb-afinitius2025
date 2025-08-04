@@ -48,6 +48,7 @@ document.getElementById('step1').addEventListener('click',function(){
         data.contactPhone = document.getElementById('contactPhone').value;
         data.contactMobile = document.getElementById('contactMobile').value;
         data.contactEmail = document.getElementById('contactEmail').value;
+        data.HearAbout = document.getElementById('HearAbout').value;
         data.consent = document.getElementById('consent').value;
 
         document.getElementById('form1').style.display = 'none';

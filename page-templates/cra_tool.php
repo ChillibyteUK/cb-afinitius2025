@@ -154,6 +154,25 @@ get_header();
                         <div class="alert alert-danger" id="contactEmailWarn">Please enter your email address</div>
                     </div>
                     <div>&nbsp;</div>
+
+
+                    <div class="form_grid mb-3">
+                        <label for="HearAbout">How did you hear about Afiniti?</label>
+                        <div>
+                            <select name="HearAbout" id="HearAbout" class="form-select">
+                                <option value="" disabled selected>Select</option>
+                                <option value="Web Search">Web Search</option>
+                                <option value="LinkedIn">LinkedIn</option>
+                                <option value="Email">Email</option>
+                                <option value="Existing Client">Existing Client</option>
+                                <option value="External Referral">External Referral</option>
+                                <option value="Internal Referral">Internal Referral</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <div class="alert alert-danger" id="HearAboutWarn">Please select an option.</div>
+                        </div>
+                    </div>
+
                     <div>
                         <label for="consent"><input type="checkbox" name="consent" id="consent" value="true">
                             <div>I consent to the terms of the <a href="/privacy-policy/" target="_blank">privacy policy</a><sup>*</sup>.</div>
@@ -431,7 +450,7 @@ add_action(
         });
     }
 </script>
-<script src="<?= esc_url( get_stylesheet_directory_uri() . '/js/cra.js?v=1' ); ?>"></script>
+<script src="<?= esc_url( get_stylesheet_directory_uri() . '/js/cra.js?v=1.1' ); ?>"></script>
         <?php
     }
 );

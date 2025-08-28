@@ -22492,6 +22492,16 @@ button.search.clear::after {
   margin-bottom: 0;
 }
 
+.dt_diagram__card {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 0.5rem;
+}
+.dt_diagram__icon {
+  width: 60px;
+  height: 60px;
+}
+
 .single-person-photo {
   max-width: 210px;
   width: 100%;

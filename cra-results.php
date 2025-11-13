@@ -53,7 +53,7 @@ header("Content-Transfer-Encoding: binary");
 
 $fp = fopen('php://output','w');
 
-$header = array('Report URL','Contact Name','Contact Title','Organisation Name','Contact Phone','Contact Email','Change in Progress?','Change Detail','Change Role','Culture','Leadership','Method','Engagement','Drivers','Capability');
+$header = array('Report URL','Contact Name','Contact Title','Organisation Name','Contact Phone','Contact Email','Contact Mobile','Contact How Hear','Change in Progress?','Change Detail','Change Role','Culture','Leadership','Method','Engagement','Drivers','Capability');
 
 fputcsv($fp,$header);
 
@@ -70,6 +70,8 @@ while ($q->have_posts()) {
     $results[] = $data['orgName'];
     $results[] = "=\"" . $data['contactPhone'] . "\"";
     $results[] = $data['contactEmail'];
+    $results[] = "=\"" . $data['contactMobile'] . "\"";
+    $results[] = $data['contactHowHear'];
     $results[] = $data['changeInProgress'];
     $results[] = $data['changeDetail'];
     $results[] = $data['changeRole'];

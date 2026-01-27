@@ -153,7 +153,7 @@ if ( is_front_page() ) {
                     Visit our UK site
                 </a>
                 <span id="countryModalDismiss" class="button">
-                    Continue to the North America site
+                    Continue to the US site
                 </span>
             </p>
         </div>

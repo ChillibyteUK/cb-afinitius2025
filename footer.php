@@ -161,27 +161,40 @@ if ( is_front_page() ) {
 </div>
 <script>
     var modal = document.querySelector("#countryModal");
-    var container = modal.querySelector(".modalContainer");
+    if (modal) {
+        var container = modal.querySelector(".modalContainer");
 
-    <?php
-    $client_ip    = $_SERVER['REMOTE_ADDR'];
-    $response     = wp_remote_get( 'http://ip-api.com/json/' . $client_ip );
-    $country_data = json_decode( wp_remote_retrieve_body( $response ) );
-    echo "console.log('IP: {$client_ip}');";
-    echo "console.log('CC: {$country_data->countryCode}');";
-    if ( 'GB' === $country_data->countryCode ) {
-        echo "modal.classList.remove('hidden');";
-    }
-    ?>
-    document.querySelector("#countryModalDismiss").addEventListener("click", function(e) {
-        modal.classList.add("hidden");
-    });
-    document.querySelector("#countryModal").addEventListener("click", function(e) {
-        if (e.target !== modal && e.target !== container) {
-            return;
+        <?php
+        // Get client IP, accounting for proxies/CDNs.
+        $client_ip = $_SERVER['REMOTE_ADDR'];
+        if ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+            $ip_list   = explode( ',', $_SERVER['HTTP_X_FORWARDED_FOR'] );
+            $client_ip = trim( $ip_list[0] );
+        } elseif ( ! empty( $_SERVER['HTTP_X_REAL_IP'] ) ) {
+            $client_ip = $_SERVER['HTTP_X_REAL_IP'];
+        } elseif ( ! empty( $_SERVER['HTTP_CF_CONNECTING_IP'] ) ) {
+            $client_ip = $_SERVER['HTTP_CF_CONNECTING_IP'];
         }
-        modal.classList.add("hidden");
-    });
+
+        $response     = wp_remote_get( 'http://ip-api.com/json/' . $client_ip );
+        $country_data = json_decode( wp_remote_retrieve_body( $response ) );
+        echo "console.log('IP: {$client_ip}');";
+        if ( isset( $country_data->countryCode ) ) {
+            echo "console.log('CC: {$country_data->countryCode}');";
+            if ( 'GB' === $country_data->countryCode ) {
+                echo "modal.classList.remove('hidden');";
+            }
+        }
+        ?>
+        document.querySelector("#countryModalDismiss").addEventListener("click", function(e) {
+            modal.classList.add("hidden");
+        });
+        modal.addEventListener("click", function(e) {
+            if (e.target === modal) {
+                modal.classList.add("hidden");
+            }
+        });
+    }
 </script>
 	<?php
 }

@@ -380,6 +380,46 @@ add_shortcode('cb_all_people', function () {
         </div>
     </div>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var modal = document.getElementById('modal-contact-person');
+    if (!modal) {
+        return;
+    }
+    var formId  = modal.dataset.gfFormId;
+    var fieldId = modal.dataset.gfRecipientField;
+
+    modal.addEventListener('show.bs.modal', function (event) {
+        var trigger = event.relatedTarget;
+        if (!trigger) {
+            return;
+        }
+        var pid       = trigger.dataset.personId || '';
+        var firstName = trigger.dataset.personFirstname || '';
+
+        var title = modal.querySelector('#modal-contact-person-title');
+        if (title) {
+            title.textContent = firstName ? 'Contact ' + firstName : 'Contact';
+        }
+
+        if (formId && fieldId) {
+            var byId   = modal.querySelector('#input_' + formId + '_' + fieldId);
+            var byName = modal.querySelector("input[name='input_" + fieldId + "']");
+            if (byId)   { byId.value = pid; }
+            if (byName) { byName.value = pid; }
+
+            var values = modal.querySelector("input[name='gform_field_values']");
+            if (values) {
+                var pieces = (values.value || '').split('&').filter(function (s) {
+                    return s.indexOf('recipient_pid=') !== 0;
+                });
+                pieces.push('recipient_pid=' + encodeURIComponent(pid));
+                values.value = pieces.join('&');
+            }
+        }
+    });
+});
+</script>
         <?php
     }
 

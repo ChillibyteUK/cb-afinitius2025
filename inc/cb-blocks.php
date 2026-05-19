@@ -7,6 +7,65 @@ function acf_blocks()
 
         acf_register_block_type(
             array(
+                'name'            => 'cb_val_prop',
+                'title'           => __( 'CB Val Prop' ),
+                'category'        => 'layout',
+                'icon'            => 'cover-image',
+                'render_template' => 'page-templates/blocks/cb-val-prop.php',
+                'mode'            => 'edit',
+                'supports'        => array(
+                    'mode'      => false,
+                    'anchor'    => true,
+                    'className' => true,
+                    'align'     => true,
+                ),
+            )
+        );
+
+        acf_register_block_type(
+            array(
+                'name'            => 'cb_hover_q_a',
+                'title'           => __( 'CB Hover Q&A' ),
+                'category'        => 'layout',
+                'icon'            => 'cover-image',
+                'render_template' => 'page-templates/blocks/cb-hover-q-a.php',
+                'mode'            => 'edit',
+                'supports'        => array(
+                    'mode'      => false,
+                    'anchor'    => true,
+                    'className' => true,
+                    'align'     => true,
+					'color'     => array(
+						'background' => true,
+						'text'       => true,
+					),
+                ),
+            )
+        );
+
+        acf_register_block_type(
+            array(
+                'name'            => 'cb_stat_spinner',
+                'title'           => __( 'CB Stat Spinner' ),
+                'category'        => 'layout',
+                'icon'            => 'cover-image',
+                'render_template' => 'page-templates/blocks/cb-stat-spinner.php',
+                'mode'            => 'edit',
+                'supports'        => array(
+                    'mode'      => false,
+                    'anchor'    => true,
+                    'className' => true,
+                    'align'     => true,
+					'color'     => array(
+						'background' => false,
+						'text'       => true,
+					),
+                ),
+            )
+        );
+
+        acf_register_block_type(
+            array(
                 'name'            => 'cb_vimeo_video_feature',
                 'title'           => __( 'CB Vimeo Video Feature' ),
                 'category'        => 'layout',

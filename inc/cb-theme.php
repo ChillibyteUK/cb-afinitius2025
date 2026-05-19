@@ -290,12 +290,19 @@ add_shortcode('cb_all_people', function () {
 
     $people = new WP_Query($args);
 
+    $contact_form_id    = cb_people_get_contact_form_id();
+    $fields             = $contact_form_id ? cb_people_resolve_form_fields( $contact_form_id ) : null;
+    $recipient_field_id = ( $fields && ! empty( $fields['recipient'] ) ) ? (int) $fields['recipient'] : 0;
+
     ?>
 <div class="container-xl">
     <div class="row g-4">
         <?php
     while ($people->have_posts()) {
         $people->the_post();
+        $full_name  = get_the_title();
+        $name_parts = explode( ' ', $full_name, 2 );
+        $first_name = $name_parts[0];
         ?>
         <div class="col-md-6 col-lg-4 pb-4" itemscope="itemscope" itemtype="https://schema.org/Person">
             <a href="<?=get_the_permalink()?>">
@@ -319,11 +326,18 @@ add_shortcode('cb_all_people', function () {
                     href="<?=get_the_permalink()?>"><span
                         class="fa-stack fa-2x"><i class="fa fa-circle fa-stack-2x"></i><i
                             class="fa-solid fa-plus fa-stack-1x fa-inverse"></i></span></a>
-                <a class="linkedin-circle"
-                    href="<?=get_field('linkedin_url')?>"
-                    target="_blank" itemprop="url"><span class="fa-stack fa-2x"><i
-                            class="fa fa-circle fa-stack-2x"></i><i
-                            class="fa-brands fa-linkedin-in fa-stack-1x fa-inverse"></i></span></a>
+                <?php if ( $contact_form_id ) { ?>
+                <a href="#modal-contact-person"
+                    class="cb-people__contact-link cb-people__contact-link--contact"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modal-contact-person"
+                    data-person-id="<?= esc_attr( get_the_ID() ); ?>"
+                    data-person-firstname="<?= esc_attr( $first_name ); ?>"
+                    data-person-fullname="<?= esc_attr( $full_name ); ?>"
+                    aria-label="Contact <?= esc_attr( $first_name ); ?>">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+                <?php } ?>
             </div>
         </div>
         <?php
@@ -332,7 +346,42 @@ add_shortcode('cb_all_people', function () {
     ?>
     </div>
 </div>
-<?php
+    <?php
+
+    // Render the shared contact modal once per page.
+    if ( $contact_form_id && ! cb_people_modal_emitted() ) {
+        ?>
+<div class="modal fade"
+    id="modal-contact-person"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="modal-contact-person-title"
+    aria-hidden="true"
+    data-gf-form-id="<?= esc_attr( $contact_form_id ); ?>"
+    data-gf-recipient-field="<?= esc_attr( $recipient_field_id ); ?>">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title" id="modal-contact-person-title">Contact</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-2">
+                <?php
+                gravity_form(
+                    $contact_form_id,
+                    /* display_title    */ false,
+                    /* display_desc     */ false,
+                    /* display_inactive */ false,
+                    /* field_values     */ array( 'recipient_pid' => 0 ),
+                    /* ajax             */ true
+                );
+                ?>
+            </div>
+        </div>
+    </div>
+</div>
+        <?php
+    }
 
     return ob_get_clean();
 });

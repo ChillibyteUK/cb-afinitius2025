@@ -1,32 +1,42 @@
 <?php
+/**
+ * Block Name: Accreditation Carousel
+ *
+ * This is the template that displays the accreditation carousel block.
+ *
+ * @package cb-afinitius2025
+ */
+
 $classes = $block['className'] ?? null;
 ?>
 <!-- accreditation_carousel -->
-<section class="accreditation_carousel <?=$classes?>">
+<section class="accreditation_carousel <?= esc_attr( $classes ); ?>">
     <div class="container-xl py-4">
         <div class="acc_container">
             <?php
 
-$accs = get_field('accreditations', 'options');
-foreach ($accs as $a) {
-    ?>
+			$accs = get_field( 'accreditations', 'options' );
+			foreach ( $accs as $a ) {
+				?>
             <div class="accreditation">
                 <a href="/about-us/"><img
-                        src="<?=wp_get_attachment_image_url($a)?>"
+                        src="<?= esc_url( wp_get_attachment_image_url( $a ) ); ?>"
                         alt=""></a>
             </div>
-            <?php
-}
+				<?php
+			}
 
-?>
+			?>
         </div>
     </div>
 </section>
 
 <?php
-add_action('wp_footer', function () {
-    ?>
-<script src="<?=get_stylesheet_directory_uri()?>/js/slick.min.js"></script>
+add_action(
+    'wp_footer',
+    function () {
+		?>
+<script src="<?= esc_url( get_stylesheet_directory_uri() . '/js/slick.min.js' ); ?>"></script>
 <script>
     jQuery(function($) {
         $('.acc_container').slick({
@@ -56,6 +66,8 @@ add_action('wp_footer', function () {
         });
     });
 </script>
-<?php
-}, 9999);
+		<?php
+	},
+    9999
+);
 ?>

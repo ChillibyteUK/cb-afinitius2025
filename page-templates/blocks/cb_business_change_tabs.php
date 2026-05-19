@@ -1,15 +1,25 @@
 <?php
-$shaping_link = get_field('shaping_link');
-$readiness_link = get_field('readiness_link');
-$delivering_link = get_field('delivering_link');
-$embedding_link = get_field('embedding_link');
+/**
+ * Block Name: Business Change Tabs
+ *
+ * This is the template that displays the business change tabs block.
+ *
+ * @package cb-afinitius2025
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+$shaping_link    = get_field( 'shaping_link' );
+$readiness_link  = get_field( 'readiness_link' );
+$delivering_link = get_field( 'delivering_link' );
+$embedding_link  = get_field( 'embedding_link' );
 
 $classes = $block['className'] ?? null;
 
 ?>
 <!-- business_change_tabs -->
 <!-- tab content  -->
-<div class="container-xl responsive-tabs <?=$classes?>">
+<div class="container-xl responsive-tabs <?= esc_attr( $classes ); ?>">
     <ul class="row nav nav-tabs" role="tablist">
         <li class="col-lg-3 nav-item">
             <a id="shaping-tab" href="#pane-shaping" class="bg--green px-3 py-3 nav-link active" data-bs-toggle="tab"
@@ -74,10 +84,10 @@ $classes = $block['className'] ?? null;
                             </div>
                             <div class="row">
                                 <div class="col-12 col-lg-8 order-2 order-lg-1 text-white div-235">
-                                    <?=get_field('shaping_content')?>
+                                    <?= wp_kses_post( get_field( 'shaping_content' ) ); ?>
                                 </div>
                                 <div class="col-12 col-lg-4 order-1 order-lg-2 text-center">
-                                    <img src="<?=get_stylesheet_directory_uri()?>/img/illustrations/Flag_bearer_full.png"
+                                    <img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/illustrations/Flag_bearer_full.png' ); ?>"
                                         style="left:50px;" class="bc-img img-fluid wow animated fadeIn">
                                     <div class="border-circle-bg"></div>
                                 </div>
@@ -93,7 +103,7 @@ $classes = $block['className'] ?? null;
                                 </div>
                             </div>
                             <div class="only-mobile pt-4">
-                                <a href="<?=$shaping_link['url']?>"
+                                <a href="<?= esc_url( $shaping_link['url'] ); ?>"
                                     class="text-white">Find
                                     out more <span class="arrow arrow-white"></span></a>
                             </div>
@@ -105,7 +115,7 @@ $classes = $block['className'] ?? null;
                                 <div class="div-rounded ss-halfcircle halfcircle-green text-white">
                                     <div class="halfcircle-content font-weight-bold">
                                         <a
-                                            href="<?=$shaping_link['url']?>">
+                                            href="<?= esc_url( $shaping_link['url'] ); ?>">
                                             <div class="text-white">Find out more</div><span
                                                 class="arrow arrow-block arrow-white mt-2"></span>
                                         </a>
@@ -147,10 +157,10 @@ $classes = $block['className'] ?? null;
                             </div>
                             <div class="row">
                                 <div class="col-12 col-lg-8 order-2 order-lg-1 text-white div-235">
-                                    <?=get_field('readiness_content')?>
+                                    <?= wp_kses_post( get_field( 'readiness_content' ) ); ?>
                                 </div>
                                 <div class="col-12 col-lg-4 order-1 order-lg-2 text-center">
-                                    <img src="<?=get_stylesheet_directory_uri()?>/img/illustrations/Sextant_Small.png"
+                                    <img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/illustrations/Sextant_Small.png' ); ?>"
                                         class="bc-img img-fluid animated fadeIn">
                                     <div class="border-circle-bg"></div>
                                 </div>
@@ -167,7 +177,7 @@ $classes = $block['className'] ?? null;
                             </div>
                             <div class="only-mobile pt-4">
                                 <a class="text-white"
-                                    href="<?=$readiness_link['url']?>">Find
+                                    href="<?= esc_url( $readiness_link['url'] ); ?>">Find
                                     out more <span class="arrow arrow-white"></span></a>
                             </div>
                         </div>
@@ -178,7 +188,7 @@ $classes = $block['className'] ?? null;
                                 <div class="div-rounded ss-halfcircle halfcircle-purple text-white">
                                     <div class="halfcircle-content font-weight-bold">
                                         <a
-                                            href="<?=$readiness_link['url']?>">
+                                            href="<?= esc_url( $readiness_link['url'] ); ?>">
                                             <div class="text-white">Find out more</div><span
                                                 class="arrow arrow-block arrow-white mt-2"></span>
                                         </a>
@@ -220,10 +230,10 @@ $classes = $block['className'] ?? null;
                             </div>
                             <div class="row">
                                 <div class="col-12 col-lg-8 order-2 order-lg-1 text-white div-235">
-                                    <?=get_field('delivering_content')?>
+                                    <?= wp_kses_post( get_field( 'delivering_content' ) ); ?>
                                 </div>
                                 <div class="col-12 col-lg-4 order-1 order-lg-2 text-center">
-                                    <img src="<?=get_stylesheet_directory_uri()?>/img/illustrations/Applauding.png"
+                                    <img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/illustrations/Applauding.png' ); ?>"
                                         style="left:-50px;" class="bc-img img-fluid animated fadeIn">
                                     <div class="border-circle-bg"></div>
                                 </div>
@@ -240,7 +250,7 @@ $classes = $block['className'] ?? null;
                             </div>
                             <div class="only-mobile pt-4">
                                 <a class="text-white"
-                                    href="<?=$delivering_link['url']?>">Find
+                                    href="<?= esc_url( $delivering_link['url'] ); ?>">Find
                                     out more <span class="arrow arrow-white"></span></a>
                             </div>
                         </div>
@@ -251,7 +261,7 @@ $classes = $block['className'] ?? null;
                                 <div class="div-rounded ss-halfcircle halfcircle-orange text-white">
                                     <div class="halfcircle-content font-weight-bold">
                                         <a
-                                            href="<?=$delivering_link['url']?>">
+                                            href="<?= esc_url( $delivering_link['url'] ); ?>">
                                             <div class="text-white">Find out more</div><span
                                                 class="arrow arrow-block arrow-white mt-2"></span>
                                         </a>
@@ -292,10 +302,10 @@ $classes = $block['className'] ?? null;
                             </div>
                             <div class="row">
                                 <div class="col-12 col-lg-8 order-2 order-lg-1 text-white div-235">
-                                    <?=get_field('embedding_content')?>
+                                    <?= wp_kses_post( get_field( 'embedding_content' ) ); ?>
                                 </div>
                                 <div class="col-12 col-lg-4 order-1 order-lg-2 text-center">
-                                    <img src="<?=get_stylesheet_directory_uri()?>/img/illustrations/drawing_pin.png"
+                                    <img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/illustrations/drawing_pin.png' ); ?>"
                                         class="bc-img img-fluid animated fadeIn">
                                     <div class="border-circle-bg"></div>
                                 </div>
@@ -312,7 +322,7 @@ $classes = $block['className'] ?? null;
                             </div>
                             <div class="only-mobile pt-4">
                                 <a class="text-white"
-                                    href="<?=$embedding_link['url']?>">Find
+                                    href="<?= esc_url( $embedding_link['url'] ); ?>">Find
                                     out more <span class="arrow arrow-white"></span></a>
                             </div>
 
@@ -324,7 +334,7 @@ $classes = $block['className'] ?? null;
                                 <div class="div-rounded ss-halfcircle halfcircle-grey text-white">
                                     <div class="halfcircle-content font-weight-bold">
                                         <a
-                                            href="<?=$embedding_link['url']?>">
+                                            href="<?= esc_url( $embedding_link['url'] ); ?>">
                                             <div class="text-white">Find out more</div><span
                                                 class="arrow arrow-block arrow-white mt-2"></span>
                                         </a>

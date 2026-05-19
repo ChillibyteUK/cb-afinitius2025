@@ -10,12 +10,36 @@
 
 .person-links {
     font-size: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+
     .more-circle,
     .linkedin-circle {
         color: var(--col-grey-500);
         transition: all 0.3s ease-out;
         &:hover {
             color: var(--col-grey-300);
+        }
+    }
+    .cb-people__contact-link--contact {
+        display: inline-flex;
+        align-items: center;
+        color: var(--col-grey-500);
+        transition: color 0.3s ease-out;
+        text-decoration: none;
+        gap: 0.5rem;
+        &:hover {
+            color: var(--col-grey-300);
+        }
+        svg {
+            width: 2rem;
+            height: 2rem;
+            fill: currentColor;
+        }
+        span {
+            font-size: 1.2rem;
+            font-weight: 700;
         }
     }
 }

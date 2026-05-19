@@ -1,53 +1,32 @@
 {
-    "key": "group_664f17dc360b2",
-    "title": "CB FAQs",
+    "key": "group_cb_hover_q_a",
+    "title": "CB Hover Q&A",
     "fields": [
         {
-            "key": "field_664f17dcca7b1",
-            "label": "CB FAQs",
+            "key": "field_cb_hover_q_a_title",
+            "label": "CB Hover Q&A",
             "name": "",
             "aria-label": "",
             "type": "message",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": false,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
             "message": "",
-            "new_lines": "wpautop",
             "esc_html": 0,
-            "acfe_field_group_condition": 0
+            "new_lines": "wpautop"
         },
         {
-            "key": "field_664f18c3cd2d0",
-            "label": "FAQ Title",
-            "name": "faq_title",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_664f18efcd2d1",
-            "label": "FAQs",
-            "name": "faqs",
+            "key": "field_6a01fbdffa941",
+            "label": "Q and A",
+            "name": "q_and_a",
             "aria-label": "",
             "type": "repeater",
-            "instructions": "",
+            "instructions": "First row is the column titles",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -55,7 +34,7 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
+            "layout": "table",
             "pagination": 0,
             "min": 0,
             "max": 0,
@@ -64,7 +43,7 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_664f18fccd2d2",
+                    "key": "field_6a01fbfefa942",
                     "label": "Question",
                     "name": "question",
                     "aria-label": "",
@@ -79,17 +58,18 @@
                     },
                     "default_value": "",
                     "maxlength": "",
+                    "allow_in_bindings": 0,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_664f18efcd2d1"
+                    "parent_repeater": "field_6a01fbdffa941"
                 },
                 {
-                    "key": "field_664f1903cd2d3",
+                    "key": "field_6a01fc04fa943",
                     "label": "Answer",
                     "name": "answer",
                     "aria-label": "",
-                    "type": "wysiwyg",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -99,11 +79,12 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "tabs": "all",
-                    "toolbar": "full",
-                    "media_upload": 0,
-                    "delay": 1,
-                    "parent_repeater": "field_664f18efcd2d1"
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 4,
+                    "placeholder": "",
+                    "new_lines": "wpautop",
+                    "parent_repeater": "field_6a01fbdffa941"
                 }
             ]
         }
@@ -113,18 +94,21 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/cb-faq"
+                "value": "acf\/cb-hover-q-a"
             }
         ]
     ],
     "menu_order": 0,
     "position": "normal",
     "style": "default",
-    "label_placement": "left",
+    "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1716459804
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1778514971
 }

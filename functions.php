@@ -11,6 +11,8 @@ defined('ABSPATH') || exit;
 define('CB_THEME_DIR', WP_CONTENT_DIR . '/themes/cb-afinitius2025');
 
 require_once CB_THEME_DIR . '/inc/cb-theme.php';
+require_once CB_THEME_DIR . '/inc/cb-block-usage.php';
+require_once CB_THEME_DIR . '/inc/cb-people-contact.php';
 
 
 /**

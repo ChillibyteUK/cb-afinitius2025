@@ -1,5 +1,9 @@
-.text--white {
+.text--white,
+.text-white {
     color: $white;
+    a {
+        color: $white !important;
+    }
 }
 
 .bg--light {
@@ -98,6 +102,10 @@
 .bg--grey-700 {
     background: var(--col-grey-700) !important;
     color: white !important;
+}
+.bg--grey-100 {
+    background: var(--col-grey-100) !important;
+    color: black !important;
 }
 
 

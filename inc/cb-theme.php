@@ -349,78 +349,8 @@ add_shortcode('cb_all_people', function () {
     <?php
 
     // Render the shared contact modal once per page.
-    if ( $contact_form_id && ! cb_people_modal_emitted() ) {
-        ?>
-<div class="modal fade"
-    id="modal-contact-person"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="modal-contact-person-title"
-    aria-hidden="true"
-    data-gf-form-id="<?= esc_attr( $contact_form_id ); ?>"
-    data-gf-recipient-field="<?= esc_attr( $recipient_field_id ); ?>">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header border-0 pb-0">
-                <h5 class="modal-title" id="modal-contact-person-title">Contact</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body pt-2">
-                <?php
-                gravity_form(
-                    $contact_form_id,
-                    /* display_title    */ false,
-                    /* display_desc     */ false,
-                    /* display_inactive */ false,
-                    /* field_values     */ array( 'recipient_pid' => 0 ),
-                    /* ajax             */ true
-                );
-                ?>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    var modal = document.getElementById('modal-contact-person');
-    if (!modal) {
-        return;
-    }
-    var formId  = modal.dataset.gfFormId;
-    var fieldId = modal.dataset.gfRecipientField;
-
-    modal.addEventListener('show.bs.modal', function (event) {
-        var trigger = event.relatedTarget;
-        if (!trigger) {
-            return;
-        }
-        var pid       = trigger.dataset.personId || '';
-        var firstName = trigger.dataset.personFirstname || '';
-
-        var title = modal.querySelector('#modal-contact-person-title');
-        if (title) {
-            title.textContent = firstName ? 'Contact ' + firstName : 'Contact';
-        }
-
-        if (formId && fieldId) {
-            var byId   = modal.querySelector('#input_' + formId + '_' + fieldId);
-            var byName = modal.querySelector("input[name='input_" + fieldId + "']");
-            if (byId)   { byId.value = pid; }
-            if (byName) { byName.value = pid; }
-
-            var values = modal.querySelector("input[name='gform_field_values']");
-            if (values) {
-                var pieces = (values.value || '').split('&').filter(function (s) {
-                    return s.indexOf('recipient_pid=') !== 0;
-                });
-                pieces.push('recipient_pid=' + encodeURIComponent(pid));
-                values.value = pieces.join('&');
-            }
-        }
-    });
-});
-</script>
-        <?php
+    if ( $contact_form_id ) {
+        cb_people_render_contact_modal( $contact_form_id, $recipient_field_id );
     }
 
     return ob_get_clean();

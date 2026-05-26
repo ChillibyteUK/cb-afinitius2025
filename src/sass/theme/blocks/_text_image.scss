@@ -81,3 +81,28 @@
         }
     }
 }
+
+.text_image {
+    &__carousel {
+        width: 100%;
+
+        .swiper-wrapper {
+            align-items: center;
+        }
+    }
+
+    .swiper-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+    }
+
+    &__image {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+}

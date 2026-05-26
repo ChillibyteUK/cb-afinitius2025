@@ -1,4 +1,33 @@
 <?php
+$legacyImage = get_field('image');
+$gallery = get_field('gallery') ?: array();
+$imageIds = array();
+
+if (is_array($legacyImage)) {
+    $legacyImage = $legacyImage['ID'] ?? null;
+}
+
+if ($legacyImage) {
+    $imageIds[] = (int) $legacyImage;
+}
+
+foreach ($gallery as $galleryImage) {
+    if (is_array($galleryImage)) {
+        $galleryImage = $galleryImage['ID'] ?? null;
+    }
+
+    $galleryImage = (int) $galleryImage;
+
+    if ($galleryImage) {
+        $imageIds[] = $galleryImage;
+    }
+}
+
+$imageIds = array_values(array_unique($imageIds));
+
+$hasGalleryCarousel = count($imageIds) > 1;
+$displayImageId = $imageIds[0] ?? null;
+
 $colour = strtolower(get_field('theme'));
 $parts = preg_split('/-/', $colour);
 $colour = $parts[0];
@@ -53,7 +82,19 @@ $classes = $block['className'] ?? null;
             </div>
             <div
                 class="<?=$splitImage?> <?=$orderImage?> text-center">
-                <?=wp_get_attachment_image(get_field('image'), 'large', null, array('class' => 'wow'))?>
+                <?php if ($hasGalleryCarousel) { ?>
+                <div class="text_image__carousel swiper">
+                    <div class="swiper-wrapper">
+                        <?php foreach ($imageIds as $imageId) { ?>
+                        <div class="swiper-slide">
+                            <?=wp_get_attachment_image($imageId, 'large', false, array('class' => 'wow text_image__image'))?>
+                        </div>
+                        <?php } ?>
+                    </div>
+                </div>
+                <?php } elseif ($displayImageId) { ?>
+                <?=wp_get_attachment_image($displayImageId, 'large', false, array('class' => 'wow text_image__image'))?>
+                <?php } ?>
             </div>
         </div>
     </div>

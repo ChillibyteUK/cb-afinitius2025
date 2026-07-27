@@ -413,6 +413,9 @@ function core_image_block_type_args( $args, $name ) {
 	if ( 'core/heading' === $name ) {
 		$args['render_callback'] = 'modify_core_heading';
 	}
+	if ( 'core/list' === $name ) {
+		$args['render_callback'] = 'modify_core_list';
+	}
 
 	return $args;
 }
@@ -434,6 +437,17 @@ function modify_core_heading( $attributes, $content ) {
 	$id = cbslugify($id);
 	?>
 <div class="container-xl" id="<?= $id; ?>">
+	<?= $content; ?>
+</div>
+	<?php
+	$content = ob_get_clean();
+	return $content;
+}
+
+function modify_core_list( $attributes, $content ) {
+	ob_start();
+	?>
+<div class="container-xl ps-5">
 	<?= $content; ?>
 </div>
 	<?php

@@ -87,7 +87,6 @@ if ( is_front_page() || is_page( 'contact-us' ) ) {
 		}
 	],
 	"sameAs": [
-		"https://twitter.com/afinitiLLP",
 		"https://www.linkedin.com/company/afiniti",
 		"https://www.youtube.com/user/Afinitiltd",
 		"https://www.crunchbase.com/organization/afinit-ltd",

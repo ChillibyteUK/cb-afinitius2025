@@ -1423,9 +1423,9 @@
   "location": [
     [
       {
-        "param": "page_template",
+        "param": "post_type",
         "operator": "==",
-        "value": "page-templates/cra_tool.php"
+        "value": "cb_cra_legacy_retained"
       }
     ]
   ],

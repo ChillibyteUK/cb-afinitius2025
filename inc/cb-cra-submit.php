@@ -10,7 +10,7 @@
  *
  * which is where submissions with no company name came from - anything that
  * follows URLs with query strings could mint one. It also let anyone send mail
- * appearing to come from enquiries@afiniti.co.uk to an arbitrary address.
+ * appearing to come from no-reply@afiniticonsultants.com to an arbitrary address.
  *
  * Everything now funnels through cb_cra_handle_submission(). cra.php is kept as
  * a thin shim because the site sits behind full page caching, so visitors on
@@ -430,21 +430,21 @@ function cb_cra_handle_submission() {
  */
 function cb_cra_send_results_email( $data, $results ) {
     $name    = $data['contactName'];
-    $subject = 'Afiniti Change Readiness Assessment Tool Results';
+    $subject = 'Afiniti Change Accelerator Results';
 
     // The logo is a hosted image rather than the base64 data URI this used to
     // carry - most mail clients block data URIs outright.
     $logo = get_stylesheet_directory_uri() . '/img/afiniti-logo-v2--dark.png';
 
     $message  = '<p>Dear ' . esc_html( $name ) . ',</p>';
-    $message .= '<p>Thank you for completing the online Afiniti Change Readiness Assessment. You can view and share your results at any time here: <a href="' . esc_url( $results ) . '">' . esc_html( $results ) . '</a>.</p>';
-    $message .= '<p>If you would like to speak with our team about your change programme, just reply to this email or complete our <a href="' . esc_url( home_url( '/contact-us/' ) ) . '">online enquiry form</a> and we will get back to you.</p>';
+    $message .= '<p>Thank you for completing the online Afiniti Change Accelerator. You can view and share your results at any time here: <a href="' . esc_url( $results ) . '">' . esc_html( $results ) . '</a>.</p>';
+    $message .= '<p>If you would like to speak with our team about your change program, just reply to this email or complete our <a href="http://www.afiniticonsultants.com/contact-us/">online inquiry form</a> and we will get back to you.</p>';
     $message .= '<p>Best regards,</p><p>Afiniti</p>';
     $message .= '<img src="' . esc_url( $logo ) . '" width="200" alt="Afiniti">';
 
     $headers = array(
         'Content-Type: text/html; charset=UTF-8',
-        'From: Afiniti <enquiries@afiniti.co.uk>',
+        'From: Afiniti <no-reply@afiniticonsultants.com>',
     );
 
     wp_mail( $data['contactEmail'], $subject, $message, $headers );
@@ -483,7 +483,7 @@ function cb_cra_notify_team( $data, $results ) {
 
     $headers = array(
         'Content-Type: text/html; charset=UTF-8',
-        'From: Afiniti <enquiries@afiniti.co.uk>',
+        'From: Afiniti <no-reply@afiniticonsultants.com>',
     );
 
     wp_mail( $to, $subject, $message, $headers );

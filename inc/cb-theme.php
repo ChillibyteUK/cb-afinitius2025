@@ -53,6 +53,31 @@ if (function_exists('acf_add_options_page')) {
             'capability'	=> 'edit_posts',
         )
     );
+
+    /*
+     * The CRA questions are global: every page running the CRA Tool template
+     * presents the same assessment, and only slide 1 differs. They used to live
+     * on the tool page itself in three questions_page_N repeaters, bound to
+     * page_template == cra-tool.php - so losing that template assignment hid
+     * every question from the editor while the values sat orphaned in postmeta.
+     *
+     * Registered as its own top-level page, NOT as a sub page of Site-Wide
+     * Settings. Passing parent_slug plus an explicit menu_slug to
+     * acf_add_options_sub_page() overwrote the *parent's* menu_slug with this
+     * one, so the Site-Wide Settings menu item opened this page instead - which
+     * looks exactly like the original settings having been wiped. They were
+     * never touched; only the menu target was wrong. Do not nest this.
+     */
+    acf_add_options_page(
+        array(
+            'page_title' => 'CRA Questions',
+            'menu_title' => 'CRA Questions',
+            'menu_slug'  => 'cra-questions',
+            'capability' => 'edit_posts',
+            'icon_url'   => 'dashicons-forms',
+            'position'   => 59,
+        )
+    );
 }
 
 function widgets_init()

@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
  * @return array Modified document title parts.
  */
 function cb_cra_document_title( $parts ) {
-	$parts['title'] = 'Change Accelerator Results';
+	$parts['title'] = 'Change Readiness Assessment Results';
 	unset( $parts['tagline'] );
 
 	return $parts;
@@ -86,7 +86,7 @@ $change_index = array( 90, 80, 70, 75, 85, 75 );
 <main id="main">
 	<section id="hero" class="hero d-flex align-items-start pt-lg-0 align-items-lg-center">
 		<div class="hero__inner container-xl text-center">
-			<h1><span>Change Accelerator</span> Tool</h1>
+			<h1><span>Change Readiness Assessment</span> Tool</h1>
 			<div class="hero__cta">
 				<a class="btn btn--green" href="/contact-us/">Contact us</a>
 			</div>
@@ -117,7 +117,7 @@ $change_index = array( 90, 80, 70, 75, 85, 75 );
 								href="<?= esc_url( get_the_permalink() ); ?>"
 								class="text-white">Bookmark this link</a> for future reference.</li>
 						<li><span class="fa-li"><i class="fa-solid fa-envelope"></i></span> <a
-								href="mailto:?subject=Afiniti Change Accelerator&body=<?= esc_url( get_the_permalink() ); ?>"
+								href="mailto:?subject=Afiniti Change Readiness Assessment&body=<?= esc_url( get_the_permalink() ); ?>"
 								class="text-white">Share via email</a></li>
 						<li><span class="fa-li"><i class="fa-solid fa-star"></i></span> Found your results useful? Help others by <a
 								href="https://g.page/r/Cfn508DiV5pLEAI/review"

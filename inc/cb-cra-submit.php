@@ -430,14 +430,14 @@ function cb_cra_handle_submission() {
  */
 function cb_cra_send_results_email( $data, $results ) {
     $name    = $data['contactName'];
-    $subject = 'Afiniti Change Accelerator Results';
+    $subject = 'Afiniti Change Readiness Assessment Results';
 
     // The logo is a hosted image rather than the base64 data URI this used to
     // carry - most mail clients block data URIs outright.
     $logo = get_stylesheet_directory_uri() . '/img/afiniti-logo-v2--dark.png';
 
     $message  = '<p>Dear ' . esc_html( $name ) . ',</p>';
-    $message .= '<p>Thank you for completing the online Afiniti Change Accelerator. You can view and share your results at any time here: <a href="' . esc_url( $results ) . '">' . esc_html( $results ) . '</a>.</p>';
+    $message .= '<p>Thank you for completing the online Afiniti Change Readiness Assessment. You can view and share your results at any time here: <a href="' . esc_url( $results ) . '">' . esc_html( $results ) . '</a>.</p>';
     $message .= '<p>If you would like to speak with our team about your change program, just reply to this email or complete our <a href="http://www.afiniticonsultants.com/contact-us/">online inquiry form</a> and we will get back to you.</p>';
     $message .= '<p>Best regards,</p><p>Afiniti</p>';
     $message .= '<img src="' . esc_url( $logo ) . '" width="200" alt="Afiniti">';

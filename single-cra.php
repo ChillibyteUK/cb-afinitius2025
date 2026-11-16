@@ -86,7 +86,7 @@ $change_index = array( 90, 80, 70, 75, 85, 75 );
 <main id="main">
 	<section id="hero" class="hero d-flex align-items-start pt-lg-0 align-items-lg-center">
 		<div class="hero__inner container-xl text-center">
-			<h1><span>Change Readiness Assessment</span> Tool</h1>
+			<h1><span>Change Readiness Assessment</span></h1>
 			<div class="hero__cta">
 				<a class="btn btn--green" href="/contact-us/">Contact us</a>
 			</div>
